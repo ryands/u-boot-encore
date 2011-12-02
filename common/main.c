@@ -705,6 +705,12 @@ static void Encore_boot(void)
 				{ mode_idx =2;
 				 lcd_console_setpos(40, 25);
 				 lcd_puts("Booting into alternate..."); }	// alt boot
+			else if (key_pad&VOLUP_KEY && gpio_pin_read(14)) {
+				lcd_console_setpos(40,25);
+				lcd_puts("Fastboot mode.");
+				lcd_console_setpos(42,0);
+				run_command("fastboot",0);
+			}
 			else // none of the above
 				{
 				 lcd_console_setpos(40, 25);
