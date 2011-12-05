@@ -710,6 +710,9 @@ static void Encore_boot(void)
 				lcd_puts("Fastboot mode.");
 				lcd_console_setpos(42,0);
 				run_command("fastboot",0);
+				lcd_puts("\n Fastboot exited... rebooting...\n");
+				udelay(5000*1000);
+				do_reset (NULL, 0, 0, NULL); /* reset after fastboot */
 			}
 			else // none of the above
 				{
